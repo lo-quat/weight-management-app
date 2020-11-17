@@ -6,23 +6,24 @@ import 'package:provider/provider.dart';
 import 'my_page_notifier.dart';
 
 class MyPage extends StatelessWidget {
-  const MyPage({Key key}) : super(key: key);
+  const MyPage._({Key key}) : super(key: key);
 
   static Widget wrapped() {
-   return MultiProvider(
-     providers: [
-       StateNotifierProvider<MyPageNotifier, MyPageState>(
-         create: (context) => MyPageNotifier(
-           context: context,
-         ),
-       )
-     ],
-     child: const MyPage._(),
-   );
- }
+    return MultiProvider(
+      providers: [
+        StateNotifierProvider<MyPageNotifier, MyPageState>(
+          create: (context) => MyPageNotifier(
+            context: context,
+          ),
+        )
+      ],
+      child: const MyPage._(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final notifier = context.watch<MyPageNotifier>();
     return Scaffold(
       appBar: AppBar(
         title: Text('日々の体重を追加していくアプリ'),
@@ -119,7 +120,7 @@ class MyPage extends StatelessWidget {
                 color: Colors.blue,
               ),
               onPressed: () {
-                print('押された');
+                notifier.pushButton();
               },
             )
           ],

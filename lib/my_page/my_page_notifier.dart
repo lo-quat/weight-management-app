@@ -10,6 +10,7 @@ part 'my_page_notifier.freezed.dart';
 abstract class MyPageState with _$MyPageState {
  const factory MyPageState({
   @Default(0) int count,
+  String comment,
  }) = _MyPageState;
 }
 
@@ -28,6 +29,10 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
 
  @override
  void initState() {}
-}
 
+ void pushButton(){
+   print('notifier!!');
+   state = state.copyWith(count: state.count + 1);
+   print(state.count);
+ }
 }
