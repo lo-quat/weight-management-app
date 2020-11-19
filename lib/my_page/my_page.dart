@@ -24,6 +24,8 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final notifier = context.watch<MyPageNotifier>();
+    final count = context.select((MyPageState state) => state.count); //ここ
+    print('描画');
     return Scaffold(
       appBar: AppBar(
         title: Text('日々の体重を追加していくアプリ'),
@@ -52,10 +54,11 @@ class MyPage extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Padding(
+                  Container(
                     padding: const EdgeInsets.only(left: 12),
+                    width: 100,
                     child: Text(
-                      '100Kg',
+                      count.toString(),
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
