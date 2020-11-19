@@ -24,7 +24,6 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final notifier = context.watch<MyPageNotifier>();
-    final count = context.select((MyPageState state) => state.count); //ここ
     print('描画');
     return Scaffold(
       appBar: AppBar(
@@ -54,14 +53,20 @@ class MyPage extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.only(left: 12),
-                    width: 100,
-                    child: Text(
-                      count.toString(),
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                    ),
+                  Builder(
+                    builder: (BuildContext context) {
+                      final count =
+                          context.select((MyPageState state) => state.count);
+                      return Container(
+                        padding: const EdgeInsets.only(left: 12),
+                        width: 100,
+                        child: Text(
+                          count.toString(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(
                     width: 10,
