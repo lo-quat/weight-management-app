@@ -128,7 +128,7 @@ class MyPage extends StatelessWidget {
                 color: Colors.blue,
               ),
               onPressed: () {
-                notifier.pushButton();
+                notifier.popUpForm();
               },
             )
           ],
