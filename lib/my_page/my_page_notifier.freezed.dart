@@ -12,9 +12,10 @@ T _$identity<T>(T value) => value;
 class _$MyPageStateTearOff {
   const _$MyPageStateTearOff();
 
-  _MyPageState call({int count = 0, String comment}) {
+  _MyPageState call({int count = 0, String weight, String comment}) {
     return _MyPageState(
       count: count,
+      weight: weight,
       comment: comment,
     );
   }
@@ -25,6 +26,7 @@ const $MyPageState = _$MyPageStateTearOff();
 
 mixin _$MyPageState {
   int get count;
+  String get weight;
   String get comment;
 
   $MyPageStateCopyWith<MyPageState> get copyWith;
@@ -34,7 +36,7 @@ abstract class $MyPageStateCopyWith<$Res> {
   factory $MyPageStateCopyWith(
           MyPageState value, $Res Function(MyPageState) then) =
       _$MyPageStateCopyWithImpl<$Res>;
-  $Res call({int count, String comment});
+  $Res call({int count, String weight, String comment});
 }
 
 class _$MyPageStateCopyWithImpl<$Res> implements $MyPageStateCopyWith<$Res> {
@@ -47,10 +49,12 @@ class _$MyPageStateCopyWithImpl<$Res> implements $MyPageStateCopyWith<$Res> {
   @override
   $Res call({
     Object count = freezed,
+    Object weight = freezed,
     Object comment = freezed,
   }) {
     return _then(_value.copyWith(
       count: count == freezed ? _value.count : count as int,
+      weight: weight == freezed ? _value.weight : weight as String,
       comment: comment == freezed ? _value.comment : comment as String,
     ));
   }
@@ -62,7 +66,7 @@ abstract class _$MyPageStateCopyWith<$Res>
           _MyPageState value, $Res Function(_MyPageState) then) =
       __$MyPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({int count, String comment});
+  $Res call({int count, String weight, String comment});
 }
 
 class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
@@ -77,27 +81,32 @@ class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object count = freezed,
+    Object weight = freezed,
     Object comment = freezed,
   }) {
     return _then(_MyPageState(
       count: count == freezed ? _value.count : count as int,
+      weight: weight == freezed ? _value.weight : weight as String,
       comment: comment == freezed ? _value.comment : comment as String,
     ));
   }
 }
 
 class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
-  const _$_MyPageState({this.count = 0, this.comment}) : assert(count != null);
+  const _$_MyPageState({this.count = 0, this.weight, this.comment})
+      : assert(count != null);
 
   @JsonKey(defaultValue: 0)
   @override
   final int count;
   @override
+  final String weight;
+  @override
   final String comment;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MyPageState(count: $count, comment: $comment)';
+    return 'MyPageState(count: $count, weight: $weight, comment: $comment)';
   }
 
   @override
@@ -106,6 +115,7 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
     properties
       ..add(DiagnosticsProperty('type', 'MyPageState'))
       ..add(DiagnosticsProperty('count', count))
+      ..add(DiagnosticsProperty('weight', weight))
       ..add(DiagnosticsProperty('comment', comment));
   }
 
@@ -115,6 +125,8 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
         (other is _MyPageState &&
             (identical(other.count, count) ||
                 const DeepCollectionEquality().equals(other.count, count)) &&
+            (identical(other.weight, weight) ||
+                const DeepCollectionEquality().equals(other.weight, weight)) &&
             (identical(other.comment, comment) ||
                 const DeepCollectionEquality().equals(other.comment, comment)));
   }
@@ -123,6 +135,7 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(count) ^
+      const DeepCollectionEquality().hash(weight) ^
       const DeepCollectionEquality().hash(comment);
 
   @override
@@ -131,10 +144,13 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
 }
 
 abstract class _MyPageState implements MyPageState {
-  const factory _MyPageState({int count, String comment}) = _$_MyPageState;
+  const factory _MyPageState({int count, String weight, String comment}) =
+      _$_MyPageState;
 
   @override
   int get count;
+  @override
+  String get weight;
   @override
   String get comment;
   @override
