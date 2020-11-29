@@ -105,7 +105,9 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                _register();
+              },
             )
           ],
         );
@@ -123,16 +125,16 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
   }
 
   void _register() {
-   final formRecord = {
-     'weight': state.weight,
-     'comment': state.comment,
-     'day': DateTime.now().toString(),
-   };
-   print(formRecord);
-   final newRecord = List<Map<String, String>>.from(state.record);
-   newRecord.add(formRecord);
-   state = state.copyWith(record: newRecord);
-   print(state.record);
-   Navigator.pop(context);
- }
+    final formRecord = {
+      'weight': state.weight,
+      'comment': state.comment,
+      'day': DateTime.now().toString(),
+    };
+    print(formRecord);
+    final newRecord = List<Map<String, String>>.from(state.record);
+    newRecord.add(formRecord);
+    state = state.copyWith(record: newRecord);
+    print(state.record);
+    Navigator.pop(context);
+  }
 }
