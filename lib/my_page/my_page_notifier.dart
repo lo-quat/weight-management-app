@@ -116,6 +116,7 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
   }
 
   void _saveWeight(String value) {
+    state = state.copyWith(weight: value);
     print(value);
   }
 
