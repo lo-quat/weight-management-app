@@ -126,10 +126,12 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
   }
 
   void _register() {
+    final dateTime = DateTime.now();
+    final day = '${dateTime.year}年${dateTime.month}月${dateTime.day}日';
     final formRecord = {
       'weight': state.weight,
       'comment': state.comment,
-      'day': DateTime.now().toString(),
+      'day': day,
     };
     print(formRecord);
     final newRecord = List<Map<String, String>>.from(state.record);

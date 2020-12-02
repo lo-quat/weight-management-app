@@ -70,10 +70,10 @@ class MyPage extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 12),
                                 width: 100,
                                 child: Text(
-                                  records[index]['weight'],
+                                  '${records[index]['weight']}Kg',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30),
+                                      fontSize: 25),
                                 ),
                               ),
                               Expanded(
